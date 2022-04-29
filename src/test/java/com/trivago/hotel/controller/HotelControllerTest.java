@@ -18,9 +18,8 @@ import java.util.List;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-//@ContextConfiguration(classes = Application.class)
 @WebMvcTest(HotelController.class)
-public class HotelControllerTest {
+class HotelControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -29,21 +28,6 @@ public class HotelControllerTest {
 
     @Test
     void shouldReturnHotelsList() throws Exception {
-        List<HotelEntity> result =
-                List.of(HotelEntity.builder()
-                                .hotelId("1")
-                                .address(Address.builder()
-                                        .city("Paris")
-                                        .country("France")
-                                        .address("Somewhere at 1555")
-                                        .build())
-                                .coordenates("-15,5554, -17.885")
-                                .name("Paris 5 stars")
-                                .shortName("Paris 5")
-                        .build());
-
-        Mockito.when(hotelFacade.search("paris")).thenReturn(result);
-
         mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/trivago/search/paris"))
                 .andExpect(status().isOk());
     }
@@ -51,7 +35,7 @@ public class HotelControllerTest {
     @Test
     void shouldReturnHotelsList4xx() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/trivago/searc/paris"))
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -63,7 +47,7 @@ public class HotelControllerTest {
     @Test
     void shouldListAllHotels4xx() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/trivago/hotel"))
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -75,6 +59,6 @@ public class HotelControllerTest {
     @Test
     void shouldFindHotelById4xx() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/trivago/hotels/1112"))
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isNotFound());
     }
 }

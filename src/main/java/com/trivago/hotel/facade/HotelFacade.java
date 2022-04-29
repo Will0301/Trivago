@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @AllArgsConstructor
 @Service
 public class HotelFacade {
@@ -17,10 +19,19 @@ public class HotelFacade {
     private  final HotelIntegration hotelIntegration;
     public List<HotelEntity> search(String city) {
         List<HotelEntity> hotels = hotelService.searchByCity(city);
-        if (hotels.isEmpty()) return
-                hotelService.saveAll
-                        (HotelResponse.mapperToHotelEntityResponse(hotelIntegration.search(city)));
-        return hotels;
+
+      var test =  Optional.of(hotels)
+                .or(Optional::empty)
+                .map(a -> hotelIntegration.search(city))
+                .map(HotelResponse::mapperToHotelEntityResponse)
+                .map(hotelService::saveAll).get();
+
+
+//        if (hotels.isEmpty()) return
+//                hotelService.saveAll
+//                        (HotelResponse.mapperToHotelEntityResponse(hotelIntegration.search(city)));
+//        return hotels;
+        return test;
     }
 
     public List<HotelEntity> listHotels() {
