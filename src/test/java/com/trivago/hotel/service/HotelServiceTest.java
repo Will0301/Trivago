@@ -1,6 +1,6 @@
 package com.trivago.hotel.service;
 
-import com.trivago.config.integration.model.Address;
+import com.trivago.integration.model.Address;
 import com.trivago.hotel.model.HotelEntity;
 import com.trivago.hotel.repository.HotelRepository;
 import org.junit.jupiter.api.Assertions;
@@ -32,7 +32,7 @@ class HotelServiceTest {
                         .address(Address.builder()
                                 .city("Paris")
                                 .country("France")
-                                .address("Somewhere at 1555")
+                                .street("Somewhere at 1555")
                                 .build())
                         .coordenates("-15,5554, -17.885")
                         .name("Paris 5 stars")
@@ -57,7 +57,7 @@ class HotelServiceTest {
                         .address(Address.builder()
                                 .city("Paris")
                                 .country("France")
-                                .address("Somewhere at 1555")
+                                .street("Somewhere at 1555")
                                 .build())
                         .coordenates("-15,5554, -17.885")
                         .name("Paris 5 stars")
@@ -83,7 +83,7 @@ class HotelServiceTest {
                         .address(Address.builder()
                                 .city("Paris")
                                 .country("France")
-                                .address("Somewhere at 1555")
+                                .street("Somewhere at 1555")
                                 .build())
                         .coordenates("-15,5554, -17.885")
                         .name("Paris 5 stars")
@@ -108,7 +108,7 @@ class HotelServiceTest {
                         .address(Address.builder()
                                 .city("Paris")
                                 .country("France")
-                                .address("Somewhere at 1555")
+                                .street("Somewhere at 1555")
                                 .build())
                         .coordenates("-15,5554, -17.885")
                         .name("Paris 5 stars")

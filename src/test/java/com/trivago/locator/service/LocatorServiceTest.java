@@ -1,7 +1,7 @@
 package com.trivago.locator.service;
 
 import com.trivago.config.exception.notfound.NotFoundException;
-import com.trivago.config.integration.model.Address;
+import com.trivago.integration.model.Address;
 import com.trivago.hotel.model.HotelEntity;
 import com.trivago.locator.model.LocatorEntity;
 import com.trivago.locator.model.mapper.request.LocatorEntityRequest;
@@ -121,7 +121,7 @@ class LocatorServiceTest {
                         .address(Address.builder()
                                 .city("Paris")
                                 .country("France")
-                                .address("Somewhere at 1555")
+                                .street("Somewhere at 1555")
                                 .build())
                         .coordenates("-15,5554, -17.885")
                         .name("Paris 5 stars")
@@ -169,7 +169,7 @@ class LocatorServiceTest {
                         .address(Address.builder()
                                 .city("Paris")
                                 .country("France")
-                                .address("Somewhere at 1555")
+                                .street("Somewhere at 1555")
                                 .build())
                         .coordenates("-15,5554, -17.885")
                         .name("Paris 5 stars")

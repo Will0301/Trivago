@@ -1,4 +1,4 @@
-package com.trivago.config.integration;
+package com.trivago.config.resttemplate;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

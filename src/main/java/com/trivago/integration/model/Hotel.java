@@ -1,19 +1,16 @@
-package com.trivago.hotel.model;
+package com.trivago.integration.model;
 
-import com.trivago.integration.model.Address;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("hotels")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class HotelEntity {
+public class Hotel {
 
     private String name;
 
@@ -21,9 +18,8 @@ public class HotelEntity {
 
     private Address address;
 
-    private String coordenates;
+    @JsonProperty("coordenates")
+    private String coordinates;
 
-    @Id
     private String hotelId;
-
 }

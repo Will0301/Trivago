@@ -1,5 +1,6 @@
-package com.trivago.config.integration.model;
+package com.trivago.integration.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,8 +13,7 @@ import lombok.NoArgsConstructor;
 public class Address {
 
     private String city;
-
     private String country;
-
-    private String address;
+    @JsonAlias("address")
+    private String street;
 }

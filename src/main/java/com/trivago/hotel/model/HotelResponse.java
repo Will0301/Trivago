@@ -1,23 +1,18 @@
-package com.trivago.config.integration.model;
+package com.trivago.hotel.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.trivago.integration.model.Address;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
-public class Hotel {
-
+@AllArgsConstructor
+public class HotelResponse {
     private String name;
-
     private String shortName;
-
     private Address address;
-
-    @JsonProperty("coordenates")
-    private String coordinates;
-
+    private String coordenates;
     private String hotelId;
 }
