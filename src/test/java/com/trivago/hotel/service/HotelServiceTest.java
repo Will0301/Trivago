@@ -3,15 +3,19 @@ package com.trivago.hotel.service;
 import com.trivago.integration.model.Address;
 import com.trivago.hotel.model.HotelEntity;
 import com.trivago.hotel.repository.HotelRepository;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.doReturn;
 
@@ -23,6 +27,9 @@ class HotelServiceTest {
 
     @Mock
     HotelRepository hotelRepository;
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     @Test
     void shouldReturnHotelByCity(){

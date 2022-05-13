@@ -31,7 +31,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation('org.mock-server:mockserver-netty:5.13.2')
+//    testImplementation('org.mock-server:mockserver-netty:5.13.2')
+    testImplementation group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '3.4.5'
+
 }
 
 tasks.named('test') {

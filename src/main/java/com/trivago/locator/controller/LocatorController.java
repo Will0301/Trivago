@@ -20,11 +20,7 @@ public class LocatorController {
     @PostMapping("/sign")
     @ResponseStatus(CREATED)
     @ApiOperation(value = "Register a locator")
-    public LocatorEntity signIn(@RequestParam String name, String cpf){
-        LocatorEntityRequest locator = LocatorEntityRequest.builder()
-                .cpf(cpf)
-                .name(name)
-                .build();
+    public LocatorEntity signIn(@RequestBody LocatorEntityRequest locator){
         return locatorFacade.signIn(locator);
     }
 

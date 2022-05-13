@@ -20,7 +20,7 @@ public class LocatorEntityRequest {
     private String name;
 
     @NotNull
-    @Size(min = 11, max = 11)
+    @Size(min = 11, max = 12)
     private String cpf;
 
     private HotelEntity hotel;
