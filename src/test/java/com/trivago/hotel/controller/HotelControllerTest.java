@@ -6,16 +6,12 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.trivago.hotel.facade.HotelFacade;
 import com.trivago.hotel.model.HotelEntity;
 import com.trivago.hotel.model.HotelResponse;
-import com.trivago.hotel.model.mapper.response.HotelResponseMapper;
-import com.trivago.hotel.repository.HotelRepository;
 import com.trivago.integration.model.Address;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -25,7 +21,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
 
-import static com.trivago.hotel.model.mapper.response.HotelResponseMapper.mapperToHotelResponse;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @AutoConfigureDataMongo
@@ -62,7 +57,6 @@ class HotelControllerTest {
 
         Mockito.when(hotelFacade.search("paris"))
                 .thenReturn(hotel);
-
 
         mockMvc.perform(MockMvcRequestBuilders.get(URL + "/search/paris"))
                 .andExpect(status().isOk())

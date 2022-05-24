@@ -1,38 +1,35 @@
 package com.trivago.hotel.service;
 
-import com.trivago.integration.model.Address;
 import com.trivago.hotel.model.HotelEntity;
 import com.trivago.hotel.repository.HotelRepository;
-import org.junit.Assert;
+import com.trivago.integration.model.Address;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.doReturn;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@DataMongoTest(excludeAutoConfiguration = EmbeddedMongoAutoConfiguration.class)
+@AutoConfigureDataMongo
+@ExtendWith(SpringExtension.class)
 class HotelServiceTest {
 
     @InjectMocks
     HotelService hotelService;
 
-    @Mock
+    @Autowired
     HotelRepository hotelRepository;
 
-    @Autowired
-    MongoTemplate mongoTemplate;
-
     @Test
-    void shouldReturnHotelByCity(){
+    void shouldReturnHotelByCity() {
         var expected =
                 List.of(HotelEntity.builder()
                         .hotelId("1")
@@ -57,7 +54,7 @@ class HotelServiceTest {
     }
 
     @Test
-    void shouldSaveAllHotels(){
+    void shouldSaveAllHotels() {
         var expected =
                 List.of(HotelEntity.builder()
                         .hotelId("1")
@@ -83,7 +80,7 @@ class HotelServiceTest {
     }
 
     @Test
-    void shouldListAllHotels(){
+    void shouldListAllHotels() {
         var expected =
                 List.of(HotelEntity.builder()
                         .hotelId("1")
@@ -108,7 +105,7 @@ class HotelServiceTest {
     }
 
     @Test
-    void shouldFindHotelById(){
+    void shouldFindHotelById() {
         var expected =
                 List.of(HotelEntity.builder()
                         .hotelId("1")
